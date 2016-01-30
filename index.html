@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	 <script src="http://cdn.extendjs.org/0.2.3/extend.min.js"></script>
+     <script src="js/myvision.js"></script>
+
+     <script src="js/engine.js"></script>
+     <script src="js/model/model.js"></script>
+     <script src="js/ffunction.js"></script>
+     <script src="data/data.js"></script> 
+     <script src="js/mvquery.js"></script>
+     <script src="js/sqlParser.js"></script>
+     
+    </head>
+    <body>
+     
+    </body>
+    
+<script> 
+
+var a = new MyVision();
+a.getModel().setData(data);
+a.newMVQuery("create MVQuery table1 as select ID");
+
+
+a.runEngine();
+
+
+
+	</script>
+</html>
