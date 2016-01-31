@@ -199,3 +199,82 @@ Col.fEquals = Col.fClass.extend(function(){
 	};
 });
 
+Col.fEquals = Col.fClass.extend(function(){
+	this.preExecutor = function(m){
+		return this.getCol(0).preExecutor(m) != this.getCol(1).preExecutor(m);
+	};
+
+	this.postExecutor = function(m){
+		return this.getCol(0).postExecutor(m) != this.getCol(1).postExecutor(m);
+	};
+});
+
+Col.fAnd = Col.fClass.extend(function(){
+	this.preExecutor = function(m){
+		return this.getCol(0).preExecutor(m) && this.getCol(1).preExecutor(m);
+	};
+
+	this.postExecutor = function(m){
+		return this.getCol(0).postExecutor(m) && this.getCol(1).postExecutor(m);
+	};
+});
+
+Col.fOr = Col.fClass.extend(function(){
+	this.preExecutor = function(m){
+		return this.getCol(0).preExecutor(m) || this.getCol(1).preExecutor(m);
+	};
+
+	this.postExecutor = function(m){
+		return this.getCol(0).postExecutor(m) || this.getCol(1).postExecutor(m);
+	};
+});
+
+Col.fGt = Col.fClass.extend(function(){
+	this.preExecutor = function(m){
+		return this.getCol(0).preExecutor(m) > this.getCol(1).preExecutor(m);
+	};
+
+	this.postExecutor = function(m){
+		return this.getCol(0).postExecutor(m) > this.getCol(1).postExecutor(m);
+	};
+});
+
+Col.fLt = Col.fClass.extend(function(){
+	this.preExecutor = function(m){
+		return this.getCol(0).preExecutor(m) < this.getCol(1).preExecutor(m);
+	};
+
+	this.postExecutor = function(m){
+		return this.getCol(0).postExecutor(m) < this.getCol(1).postExecutor(m);
+	};
+});
+
+Col.fGte = Col.fClass.extend(function(){
+	this.preExecutor = function(m){
+		return this.getCol(0).preExecutor(m) >= this.getCol(1).preExecutor(m);
+	};
+
+	this.postExecutor = function(m){
+		return this.getCol(0).postExecutor(m) >= this.getCol(1).postExecutor(m);
+	};
+});
+
+Col.fLte = Col.fClass.extend(function(){
+	this.preExecutor = function(m){
+		return this.getCol(0).preExecutor(m) <= this.getCol(1).preExecutor(m);
+	};
+
+	this.postExecutor = function(m){
+		return this.getCol(0).postExecutor(m) <= this.getCol(1).postExecutor(m);
+	};
+});
+
+Col.fNot = Col.fClass.extend(function(){
+	this.preExecutor = function(m){
+		return !this.getCol(0).preExecutor(m);
+	};
+
+	this.postExecutor = function(m){
+		return !this.getCol(0).postExecutor(m);
+	};
+});
