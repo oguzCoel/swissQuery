@@ -28,15 +28,15 @@ sqlParser = Class.extend(function(){
 			console.log("wrong query input");
 		}
 
-		if ((sqlQuery[3] == "as" && sqlQuery[4] == "select") && (sqlQuery[5] == "ID" || sqlQuery[5] == "Year" || sqlQuery[5] == "Group_Dim")) {
+		if ((sqlQuery[3] == "as" && sqlQuery[4] == "select") && (sqlQuery[5] == data[0][0][0] || sqlQuery[5] == data[0][1][0] || sqlQuery[5] == data[0][2][0])) {
 			switch (true) {
-				case sqlQuery[5] == "ID":
+				case sqlQuery[5] == data[0][0][0]:
 					var col = new Col.fSelect(0);
 					break;
-				case sqlQuery[5] == "Year":
+				case sqlQuery[5] == data[0][1][0]:
 					var col = new Col.fSelect(1);
 					break;
-				case sqlQuery[5] == "Group_Dim":
+				case sqlQuery[5] == data[0][2][0]:
 					var col = new Col.fSelect(2);
 					break;
 				default:
