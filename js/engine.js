@@ -24,36 +24,38 @@ Engine = Class.extend(function(){
 	};
 	
 	
-	function rowIterator(model, mvquerySet ) {	 
-	    
+	function rowIterator(model, mvquerySet ) {
+
 		for(var i = 0; i <  model.getData().length; i++){
 			mvqIterator(model.getData()[i],  mvquerySet , i)			
 		}
 	};
 	
-	function mvqIterator(model,  mvquerySet ,row) {		
+	function mvqIterator(model,  mvquerySet ,row) {
+
 		for( key in mvquerySet){
-			if(mvData[key] === undefined ) {mvData[key] = new Array(); }
-			
-			functionExec(model, mvquerySet[key] , key,row)
+			if( mvquerySet[key].getWhere().preExecutor(model) ) { //where clause
+				if(mvData[key] === undefined ) {mvData[key] = new Array(); }
+				functionExec(model, mvquerySet[key] , key,row)
+			}
 		}
 	};
 	
 	
 	function functionExec(model, mvquerySet , mvqKey,row){
 	
-		for( key in mvquerySet.getQuery() ) {
-			var peFunc = mvquerySet.getQuery()[key];
+		for( key in mvquerySet.getSelect() ) {
+			var peFunc = mvquerySet.getSelect()[key];
 			
 			if(mvData[mvqKey][row]=== undefined ) {mvData[mvqKey][row] = new Array(); }
 			if(execCycle == 0)
 			{			
-				
-				mvData[mvqKey][row].push(  peFunc.preExecutor(model)  )
+				peFunc.preExecutor(model)
+//				mvData[mvqKey][row].push(   peFunc.preExecutor(model) )
 			}
 			else
 			{
-				mvData[mvqKey][row][key]=  peFunc.postExecutor(mvData[mvqKey][row][key])  
+				mvData[mvqKey][row].push(  peFunc.postExecutor(model)  );
 			}
 		}							
 	}

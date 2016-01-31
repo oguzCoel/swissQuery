@@ -4,19 +4,24 @@ MVQuery = Class.extend(function(){
 	var topRow = 10;
 	var orderBy;
 	
-	var query = new Array();
+	var query = {};
 	
 	this.constructor = function(param1,param2){		
 	    id = param1.id;
-		distinct = param1.distinct;		
-		query = param2;
+		query = {select:param2.select,
+				 where:param2.where}
+
 	}
 	
 	this.getId = function () {
 		return id;
 	}
 	
-	this.getQuery = function () {
-		return query
+	this.getSelect = function () {
+		return query.select
+	}
+
+	this.getWhere = function () {
+		return query.where
 	}
 })
