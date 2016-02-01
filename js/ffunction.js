@@ -55,6 +55,32 @@ Col.fString = Col.fClass.extend(function(){
 	}		
 });
 
+Col.fNumber = Col.fClass.extend(function(){
+
+	this.preExecutor = function(m){
+		return Number(this.getCol(0));
+	}
+
+	this.postExecutor = function(m){
+		if(	typeof m=='number') {return m}
+		return Number(this.getCol(0));
+	}
+})
+
+Col.fBoolean = Col.fClass.extend(function(){
+
+	this.preExecutor = function(m){
+		return Number(this.getCol(0));
+	}
+
+	this.postExecutor = function(m){
+		if(	typeof m=='boolean') {return m}
+		return Number(this.getCol(0));
+	}
+})
+
+
+
 
 Col.fUpCase = Col.fClass.extend(function(){	
 	this.preExecutor = function(m){		
@@ -84,105 +110,109 @@ Col.fIndexOf = Col.fClass.extend(function(){
 
 
 Col.fSum = Col.fClass.extend(function(){
-var total = 0;
-	this.preExecutor = function(m){	
-		total = Number(this.getCol(0).preExecutor(m)) + total
+var total = new Array();
+
+	this.preExecutor = function(m){
+
+		var grId = '-';
+		for(key in this.getCol(1))
+		{
+			grId += this.getCol(1)[key].preExecutor(m) +'%<->%';
+		}
+		if(total[grId] === undefined) {total[grId] = 0}
+
+		total[grId] = Number(this.getCol(0).preExecutor(m)) + total[grId]
 		return null;
-	}
+	};
 	
-	this.postExecutor = function(m){					
-		return this.getCol(0).postExecutor(Number(total));		
+	this.postExecutor = function(m){
+		var grId = '-';
+		for(key in this.getCol(1))
+		{
+			grId += this.getCol(1)[key].preExecutor(m) +'%<->%';
+		}
+
+		return this.getCol(0).postExecutor(Number(total[grId]));
 	}
-	
-})
+});
 
 
 //Arithmetic
 
-Col.fNumber = Col.fClass.extend(function(){	
-	
-	this.preExecutor = function(m){		
-		return Number(this.getCol(0));
-	}
-	
-	this.postExecutor = function(m){
-		if(	typeof m=='number') {return m}
-		return Number(this.getCol(0));	
-	}			
-})
+
 
 Col.fAddition = Col.fClass.extend(function(){	
 	this.preExecutor = function(m){		
 		this.getCol(0).preExecutor(m);
 		this.getCol(1).preExecutor(m);
 		return this.postExecutor(m);
-	}
+	};
 	
 	this.postExecutor = function(m){	
 
 		return Number( this.getCol(0).postExecutor(m) ) + Number( this.getCol(1).postExecutor(m) );	
 	}		
-})
+});
 
 Col.fSubtraction = Col.fClass.extend(function(){	
 	this.preExecutor = function(m){		
 		this.getCol(0).preExecutor(m);
 		this.getCol(1).preExecutor(m);
 		return this.postExecutor(m);
-	}
+	};
 	
 	this.postExecutor = function(m){	
 		return Number( this.getCol(0).postExecutor(m) ) - Number( this.getCol(1).postExecutor(m) );	
 	}		
-})
+});
 
 Col.fMultiplication = Col.fClass.extend(function(){	
 	this.preExecutor = function(m){		
 		this.getCol(0).preExecutor(m);
 		this.getCol(1).preExecutor(m);
 		return this.postExecutor(m);
-	}
+	};
 	
 	this.postExecutor = function(m){	
 		return Number( this.getCol(0).postExecutor(m) ) * Number( this.getCol(1).postExecutor(m) );	
 	}		
-})
+});
 
 Col.fDivision = Col.fClass.extend(function(){	
 	this.preExecutor = function(m){		
 		this.getCol(0).preExecutor(m);
 		this.getCol(1).preExecutor(m);
 		return this.postExecutor(m);
-	}
+	};
 	
 	this.postExecutor = function(m){	
 		return Number( this.getCol(0).postExecutor(m) ) / Number( this.getCol(1).postExecutor(m) );	
 	}		
-})
+});
 
 Col.fModulus = Col.fClass.extend(function(){	
 	this.preExecutor = function(m){		
 		this.getCol(0).preExecutor(m);
 		this.getCol(1).preExecutor(m);
 		return this.postExecutor(m);
-	}
+	};
 	
 	this.postExecutor = function(m){	
 		return Number( this.getCol(0).postExecutor(m) ) % Number( this.getCol(1).postExecutor(m) );	
 	}		
-})
+});
 
 Col.fToExponential = Col.fClass.extend(function(){	
 	this.preExecutor = function(m){		
 		this.getCol(0).preExecutor(m);
 		this.getCol(1).preExecutor(m);
 		return this.postExecutor(m);
-	}
+	};
 	
 	this.postExecutor = function(m){	
 		return Number( this.getCol(0).postExecutor(m) ).toExponential( Number( this.getCol(1).postExecutor(m) ) );	
 	}		
-})
+});
 
 
 
@@ -199,7 +229,7 @@ Col.fEquals = Col.fClass.extend(function(){
 	};
 });
 
-Col.fEquals = Col.fClass.extend(function(){
+Col.fNEquals = Col.fClass.extend(function(){
 	this.preExecutor = function(m){
 		return this.getCol(0).preExecutor(m) != this.getCol(1).preExecutor(m);
 	};
