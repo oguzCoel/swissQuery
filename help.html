@@ -3,55 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 <body>
 
 <div class="container">
 
     <div class="panel panel-default">
-        <div class="panel-heading">Main Access Modifiers</div>
+        <div class="panel-heading"><h4>Main Access Modifiers</h4></div>
         <div class="panel-body">
 
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fSelect(
+                        <strong>int index</strong>
+                        )
+                    </h4>
+                    <p>takes an int as index and returns the column at position index from the data model</p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fString(
+                        <strong>String str</strong>
+                        )
+                    </h4>
+                    <p>takes a String literal an returns it in the output table</p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fNumber(
+                        <strong>Number aNumber</strong>
+                        )
+                    </h4>
+                    <p>takes a Number as argument and returns it in the output table</p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fBoolean(
+                        <strong>Boolean bol</strong>
+                        )
+                    </h4>
+                    <p>takes a Boolean value
+                        <small>(true/false)</small>
+                        as argument and returns it in the output table
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
     <div class="panel panel-default">
+        <div class="panel-heading"><h4>String Functions</h4></div>
         <div class="panel-body">
-            <h3>Col.fSelect(
-                <strong>int index</strong>
-                )
-            </h3>
-            <p>takes an int as index and returns the column at position index from the data model</p>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fUpCase(
+                        <strong>String str</strong>
+                        )
+                    </h4>
+                    <p>Converts a string to uppercase letters</p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fLowerCase(
+                        <strong>String str</strong>
+                        )
+                    </h4>
+                    <p>Converts a string to lowercase letters</p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fIndexOf(
+                        <strong>String str , String str2</strong>
+                        )
+                    </h4>
+                    <p>Returns the position of the first found occurrence of a specified value in a string</p>
+
+                    <code>
+                        var col1 = new Col.fString("lmn");<br />
+                        var col2 = new Col.fString("abcdefghijklmnop");<br />
+                        var sum = new Col.fIndexOf(col2,col1);<br />
+                    </code>
+
+                    <small> returns 11</small>
+                </div>
+            </div>
+
+
         </div>
     </div>
 
     <div class="panel panel-default">
+        <div class="panel-heading"><h4>Arithmetic Functions</h4></div>
         <div class="panel-body">
-            <h3>Col.fString(
-                <strong>String str</strong>
-                )
-            </h3>
-            <p>takes a String literal an returns it in the output table</p>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fAddition(
+                        <strong>int i , int j</strong>
+                        )
+                    </h4>
+                    <p>returns i + j</p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fSubtraction(
+                        <strong>int i , int j</strong>
+                        )
+                    </h4>
+                    <p>returns i - j</p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fMultiplication(
+                        <strong>int i , int j</strong>
+                        )
+                    </h4>
+                    <p>returns i * j</p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fDivision(
+                        <strong>int i , int j</strong>
+                        )
+                    </h4>
+                    <p>returns i / j</p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fModulus(
+                        <strong>int i</strong>
+                        )
+                    </h4>
+                    <p>returns modulus of i</p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fToExponential(
+                        <strong>int i</strong>
+                        )
+                    </h4>
+                    <p>returns Exponential of i</p>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <h3>Col.fNumber(
-                <strong>Number aNumber</strong>
-                )
-            </h3>
-            <p>takes a Number as argument and returns it in the output table</p>
-        </div>
-    </div>
+
 
     <div class="panel panel-default">
+        <div class="panel-heading"><h4>Comparison Functions</h4></div>
         <div class="panel-body">
-            <h3>Col.fBoolean(
-                <strong>Boolean bol</strong>
-                )
-            </h3>
-            <p>takes a Boolean value <small>(true/false)</small> as argument and returns it in the output table</p>
-        </div>
-    </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fEquals(
+                        <strong>Obj b1 , Obj b2</strong>
+                        )
+                    </h4>
+                    <p>Returns b1 == b2</p>
+                </div>
+            </div>
+
 
         </div>
     </div>
@@ -60,8 +198,7 @@
 
 
 
-Col.fUpCase
-Col.fIndexOf
+
 
 
 Col.fSum
@@ -69,20 +206,11 @@ Col.fSum
 
 
 
-Col.fAddition
-
-Col.fSubtraction
-
-Col.fMultiplication
-
-Col.fDivision
-
-Col.fModulus
-
-Col.fToExponential
 
 
-Col.fEquals
+
+
+
 
 
 Col.fNEquals

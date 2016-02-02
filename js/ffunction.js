@@ -92,6 +92,15 @@ Col.fUpCase = Col.fClass.extend(function(){
 	}		
 });
 
+Col.fLowerCase = Col.fClass.extend(function(){
+	this.preExecutor = function(m){
+		return this.getCol(0).preExecutor(m).toLowerCase()
+	};
+
+	this.postExecutor = function(m){
+		return this.getCol(0).postExecutor(m).toLowerCase()
+	}
+});
 
 
 Col.fIndexOf = Col.fClass.extend(function(){	
@@ -125,6 +134,33 @@ var total = new Array();
 		return null;
 	};
 	
+	this.postExecutor = function(m){
+		var grId = '-';
+		for(key in this.getCol(1))
+		{
+			grId += this.getCol(1)[key].preExecutor(m) +'%<->%';
+		}
+
+		return this.getCol(0).postExecutor(Number(total[grId]));
+	}
+});
+
+Col.fCount = Col.fClass.extend(function(){
+	var total = new Array();
+
+	this.preExecutor = function(m){
+
+		var grId = '-';
+		for(key in this.getCol(1))
+		{
+			grId += this.getCol(1)[key].preExecutor(m) +'%<->%';
+		}
+		if(total[grId] === undefined) {total[grId] = 0}
+
+		total[grId] =  total[grId] + 1
+		return null;
+	};
+
 	this.postExecutor = function(m){
 		var grId = '-';
 		for(key in this.getCol(1))
