@@ -194,6 +194,37 @@
         </div>
     </div>
 
+
+    <div class="panel panel-primary">
+        <div class="panel-heading"><h4>Sample Queries</h4></div>
+        <div class="panel-body">
+            <blockquote>
+            SELECT
+            Year,
+            Sum(Amount + 10)
+            FROM data
+            Group By Year
+            </blockquote>
+
+            <blockquote>
+            var col1 = new Col.fSelect(1);<br/>
+            var col2 = new Col.fSelect(4);<br/>
+                <br/>
+            var nr = new Col.fNumber(10);<br/>
+                <br/>
+            var add = new Col.fAddition(col2,nr);<br/>
+                <br/>
+            var groupBy = new Col.fSelect(1);<br/>
+            var sum = new Col.fSum(add,[groupBy]);<br/>
+                <br/>
+
+
+            query = new MVQuery( {id:"table1"} , {select: [ col1,sum] } );<br/>
+            </blockquote>
+
+
+        </div>
+    </div>
 </div>
 
 
