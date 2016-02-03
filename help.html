@@ -186,10 +186,59 @@
                         <strong>Obj b1 , Obj b2</strong>
                         )
                     </h4>
-                    <p>Returns b1 == b2</p>
+                    <p>Returns b1 == b2. Compares two objects and returns true if they are equal</p>
                 </div>
             </div>
 
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fNEquals(
+                        <strong>Obj b1 , Obj b2</strong>
+                        )
+                    </h4>
+                    <p>Returns b1 != b2. Compares two objects and returns true if they are not equal</p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fAnd(
+                        <strong>Boolean b1, Boolean b2</strong>
+                        )
+                    </h4>
+                    <p>logical and operator. T and T = T . T and F = F. ect. </p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fOr(
+                        <strong>Boolean b1, Boolean b2</strong>
+                        )
+                    </h4>
+                    <p>logical or operator. T or T = T . T or F = T. ect. </p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fGt(
+                        <strong>Obj o1 , Obj o2</strong>
+                        )
+                    </h4>
+                    <p>compares if o1 is grether ( > ) than o2 </p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Col.fLt(
+                        <strong>Obj o1 , Obj o2</strong>
+                        )
+                    </h4>
+                    <p>compares if o1 is less ( < ) than o2 </p>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -198,30 +247,29 @@
     <div class="panel panel-primary">
         <div class="panel-heading"><h4>Sample Queries</h4></div>
         <div class="panel-body">
-            <blockquote>
-            SELECT
-            Year,
-            Sum(Amount + 10)
-            FROM data
-            Group By Year
-            </blockquote>
+            <em>SQL:</em>
+            <pre>
+    <span class="text-primary">SELECT</span>
+    Year,
+    Sum(Amount + 10)
+    <span class="text-primary">FROM</span> data
+    <span class="text-primary">Group By</span> Year
+            </pre>
+            <em>JavaScript:</em>
+             <pre class="text-danger">
+    var col1 = new Col.fSelect(1);
+    var col2 = new Col.fSelect(4);
 
-            <blockquote>
-            var col1 = new Col.fSelect(1);<br/>
-            var col2 = new Col.fSelect(4);<br/>
-                <br/>
-            var nr = new Col.fNumber(10);<br/>
-                <br/>
-            var add = new Col.fAddition(col2,nr);<br/>
-                <br/>
-            var groupBy = new Col.fSelect(1);<br/>
-            var sum = new Col.fSum(add,[groupBy]);<br/>
-                <br/>
+    var nr = new Col.fNumber(10);
 
+    var add = new Col.fAddition(col2,nr);
+    var groupBy = new Col.fSelect(1);
+    var sum = new Col.fSum(add,[groupBy]);
 
-            query = new MVQuery( {id:"table1"} , {select: [ col1,sum] } );<br/>
-            </blockquote>
+    var query = new MVQuery( {id:"table1"} , {select: [ col1,sum] } );<br/>
 
+    return query
+             </pre>
 
         </div>
     </div>
@@ -240,20 +288,6 @@ Col.fSum
 
 
 
-
-
-
-
-Col.fNEquals
-
-Col.fAnd
-
-Col.fOr
-
-Col.fGt
-
-
-Col.fLt
 
 Col.fGte
 

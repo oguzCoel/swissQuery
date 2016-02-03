@@ -141,7 +141,7 @@ var total = new Array();
 			grId += this.getCol(1)[key].preExecutor(m) +'%<->%';
 		}
 
-		return this.getCol(0).postExecutor(Number(total[grId]));
+		return Number(total[grId]);
 	}
 });
 
@@ -168,7 +168,7 @@ Col.fCount = Col.fClass.extend(function(){
 			grId += this.getCol(1)[key].preExecutor(m) +'%<->%';
 		}
 
-		return this.getCol(0).postExecutor(Number(total[grId]));
+		return Number(total[grId]);
 	}
 });
 
